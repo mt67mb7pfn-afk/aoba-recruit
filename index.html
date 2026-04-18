@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="青葉自動車学校の採用情報。教習指導員・受付/事務スタッフを正社員で募集しています。横浜市青葉区藤が丘駅から徒歩7分。">
+<title>採用情報｜青葉自動車学校</title>
+
+<!--
+  ================================================================
+  青葉自動車学校 採用ページ（グリーンテーマ）
+  GitHub Pages 公開用サンプル
+
+  更新ポイントは <!-- ★ --> でマークしています。
+  色味は :root の CSS 変数で一括変更できます。
+  ================================================================
+-->
+
+<style>
+  :root{
+    --brand:#3ba55c;        /* メイングリーン（新芽のような爽やかな緑） */
+    --brand-dark:#2d7a3d;   /* 見出し・リンクホバー用 */
+    --brand-light:#a8d5a1;  /* アクセント薄緑 */
+    --brand-bg:#f1f8ed;     /* ページ内の淡いグリーン背景 */
+    --accent:#ffb62a;       /* CTAボタン用ウォームイエロー */
+    --accent-dark:#e69d00;
+    --text:#2a2f27;
+    --muted:#6a736a;
+    --line:#d9e6d5;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+    background:#fff;
+    line-height:1.75;
+    -webkit-text-size-adjust:100%;
+  }
+  a{color:var(--brand-dark)}
+
+  /* === ヘッダー === */
+  .page-hero{
+    position:relative;
+    background:linear-gradient(135deg,#4cbf6e 0%,#3ba55c 55%,#2d7a3d 100%);
+    color:#fff;
+    padding:64px 20px 72px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .page-hero::before{
+    /* 右上に葉っぱ風の装飾 */
+    content:"";
+    position:absolute;
+    top:-80px; right:-60px;
+    width:260px; height:260px;
+    background:radial-gradient(circle at 30% 70%, rgba(255,255,255,.18), transparent 60%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .page-hero::after{
+    content:"";
+    position:absolute;
+    bottom:-60px; left:-40px;
+    width:200px; height:200px;
+    background:radial-gradient(circle at 70% 30%, rgba(255,255,255,.12), transparent 60%);
+    border-radius:50%;
+    pointer-events:none;
+  }
+  .page-hero h1{
+    margin:0 0 10px;
+    font-size:30px;
+    letter-spacing:.08em;
+    position:relative;
+    z-index:1;
+  }
+  .page-hero .sub{
+    margin:0;
+    font-size:15px;
+    opacity:.95;
+    position:relative;
+    z-index:1;
+  }
+  .leaf{
+    display:inline-block;
+    margin-right:8px;
+    transform:translateY(2px);
+  }
+
+  /* === 共通 === */
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+
+  /* === イントロ === */
+  .intro{
+    padding:48px 0 8px;
+  }
+  .intro h2{
+    font-size:22px;
+    margin:0 0 14px;
+    padding-left:16px;
+    border-left:6px solid var(--brand);
+    color:var(--brand-dark);
+  }
+  .intro p{
+    margin:0 0 1em;
+    font-size:15px;
+  }
+
+  /* === 募集職種カード === */
+  .jobs{
+    padding:24px 0 40px;
+    display:grid;
+    gap:32px;
+  }
+  .job{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(59,165,92,.08);
+  }
+  .job-head{
+    background:linear-gradient(90deg,var(--brand) 0%,var(--brand-dark) 100%);
+    color:#fff;
+    padding:16px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .job-head h3{
+    margin:0;
+    font-size:20px;
+    letter-spacing:.04em;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .job-tag{
+    background:var(--accent);
+    color:#4a3400;
+    font-weight:700;
+    font-size:13px;
+    padding:5px 14px;
+    border-radius:999px;
+  }
+  .job-body{
+    padding:24px 22px 12px;
+    background:linear-gradient(180deg,var(--brand-bg) 0%,#fff 120px);
+  }
+  .job-lead{
+    font-size:15px;
+    margin:0 0 20px;
+    padding:14px 16px;
+    background:var(--white);
+    border-left:4px solid var(--brand-light);
+    border-radius:6px;
+  }
+
+  /* 募集要項テーブル */
+  .spec{
+    width:100%;
+    border-collapse:collapse;
+    font-size:15px;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+  }
+  .spec th,.spec td{
+    border-top:1px solid var(--line);
+    padding:14px 12px;
+    vertical-align:top;
+    text-align:left;
+  }
+  .spec th{
+    width:150px;
+    color:var(--brand-dark);
+    font-weight:700;
+    white-space:nowrap;
+    background:var(--brand-bg);
+  }
+  .spec tr:first-child th,.spec tr:first-child td{border-top:none}
+
+  .fit{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .fit div{
+    padding:16px 18px;
+    border-radius:10px;
+    font-size:14px;
+  }
+  .fit .ok{
+    background:#ecf7e6;
+    border-left:5px solid var(--brand);
+  }
+  .fit .ng{
+    background:#fff4e9;
+    border-left:5px solid #e89b5c;
+  }
+  .fit h4{
+    margin:0 0 8px;
+    font-size:14px;
+    color:var(--brand-dark);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .fit .ng h4{color:#b85a16}
+
+  /* === 応募導線（CTA） === */
+  .apply{
+    margin:48px 0 48px;
+    background:linear-gradient(135deg,var(--brand) 0%,var(--brand-dark) 100%);
+    color:#fff;
+    border-radius:16px;
+    padding:36px 28px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(45,122,61,.25);
+  }
+  .apply h2{
+    margin:0 0 10px;
+    font-size:24px;
+  }
+  .apply p{
+    margin:0 0 24px;
+    opacity:.95;
+    font-size:15px;
+  }
+  .cta{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .cta a{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 28px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:16px;
+    min-width:240px;
+    justify-content:center;
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:0 4px 12px rgba(0,0,0,.1);
+  }
+  .cta a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+  }
+  .cta .tel{background:#fff;color:var(--brand-dark)}
+  .cta .mail{background:var(--accent);color:#4a3400}
+  .apply small{
+    display:block;
+    margin-top:18px;
+    font-size:13px;
+    opacity:.9;
+  }
+
+  .note{
+    max-width:640px;
+    margin:0 auto 64px;
+    padding:18px 22px;
+    background:#fffbeb;
+    border:1px solid var(--accent);
+    border-radius:10px;
+    font-size:14px;
+    color:#6b4b00;
+    text-align:center;
+  }
+  .note a{color:var(--accent-dark);font-weight:700}
+
+  footer{
+    padding:28px 20px 36px;
+    text-align:center;
+    color:var(--muted);
+    font-size:13px;
+    background:var(--brand-bg);
+    border-top:1px solid var(--line);
+  }
+
+  /* === スマホ調整 === */
+  @media (max-width:640px){
+    .page-hero{padding:44px 16px 52px}
+    .page-hero h1{font-size:24px}
+    .intro{padding:36px 0 0}
+    .job-head h3{font-size:18px}
+    .spec th{width:110px;font-size:14px;padding:12px 10px}
+    .spec td{font-size:14px;padding:12px 10px}
+    .fit{grid-template-columns:1fr}
+    .cta a{width:100%;min-width:0}
+    .apply{padding:28px 20px}
+    .apply h2{font-size:20px}
+  }
+</style>
+</head>
+<body>
+
+<header class="page-hero">
+  <h1><span class="leaf">🌱</span>採用情報</h1>
+  <p class="sub">一緒に「安心・安全なドライバー」を育てる仲間を募集しています</p>
+</header>
+
+<main class="wrap">
+
+  <!-- === イントロ === -->
+  <section class="intro">
+    <h2>青葉自動車学校からのメッセージ</h2>
+    <p>
+      青葉自動車学校は、横浜市青葉区藤が丘で地域のドライバー育成に取り組んでいます。
+      未経験からスタートし、国家資格「教習指導員資格」の取得を会社がしっかりサポート。
+      人と接することが好きで、向上心のある方をお待ちしています。
+    </p>
+  </section>
+
+  <!-- === 募集職種 === -->
+  <section class="jobs">
+
+    <!-- 職種1：教習指導員 -->
+    <article class="job" id="instructor">
+      <header class="job-head">
+        <h3>🚗 教習指導員</h3>
+        <span class="job-tag">正社員／未経験歓迎</span>
+      </header>
+      <div class="job-body">
+        <p class="job-lead">
+          入社後、2〜3ヶ月の研修で国家資格「教習指導員資格」の取得を目指していただきます。
+          資格取得後は、技能・学科の教習を担当。先輩がしっかりフォローします。
+        </p>
+
+        <table class="spec">
+          <tr><th>雇用形態</th><td>正社員</td></tr>
+          <tr><th>仕事内容</th><td>入社後、国家資格「教習指導員資格」の取得を目指し研修（2〜3ヶ月）。資格取得後は教習指導員として技能・学科教習を担当します。</td></tr>
+          <tr><th>応募資格</th><td>
+            21〜45歳位までの男女<br>
+            要普通免許（AT限定可・取得後1年以上）<br>
+            <small>※準中型免許・中型免許・普通二輪免許所持者は優遇</small>
+          </td></tr>
+          <tr><th>給与</th><td><!-- ★ -->
+            研修中（資格取得まで）：時給<br>
+            契約社員（教習開始〜1年間）：1,250円〜1,350円<br>
+            <strong>正社員：年収400万円〜</strong>
+          </td></tr>
+          <tr><th>勤務時間</th><td>
+            平日　8:43〜17:40（実働8時間／残業あり）<br>
+            日祝　8:43〜16:40（実働7時間）
+          </td></tr>
+          <tr><th>休日</th><td>ローテーションカレンダーによる（4勤1休、隔週月曜休校日）／年末年始／夏季3日／<strong>年間105日</strong></td></tr>
+          <tr><th>待遇</th><td>賞与年2回（7月・12月）／昇給年1回（4月）／健康保険／厚生年金／雇用保険／残業手当／交通費支給（月30,000円まで）</td></tr>
+          <tr><th>勤務地</th><td>
+            横浜市青葉区藤が丘1-23-14<br>
+            田園都市線「藤が丘駅」より徒歩約7分<br>
+            <small>車通勤可（研修中は不可）</small>
+          </td></tr>
+        </table>
+
+        <div class="fit">
+          <div class="ok">
+            <h4>✅ こんな方に向いています</h4>
+            人と話すのが好きな方／向上心のある方／いろいろなことにチャレンジしたい方／忍耐力のある方／運転が好きな方／体力のある方
+          </div>
+          <div class="ng">
+            <h4>⚠️ 向いていない方</h4>
+            人と話すのが苦手な方／運転が嫌いな方／短気な方
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 職種2：受付・事務 -->
+    <article class="job" id="reception">
+      <header class="job-head">
+        <h3>💬 受付・事務スタッフ</h3>
+        <span class="job-tag">正社員</span>
+      </header>
+      <div class="job-body">
+        <p class="job-lead">
+          入校受付や在校生のスケジュール管理、電話対応など、学校の「顔」となる窓口業務です。
+          お客様と直接関わり、感謝される仕事です。
+        </p>
+
+        <table class="spec">
+          <tr><th>雇用形態</th><td>正社員</td></tr>
+          <tr><th>仕事内容</th><td>入校されるお客様の受付・手続き、在校生のスケジュール管理などの窓口業務、PC入力作業、電話対応など</td></tr>
+          <tr><th>応募資格</th><td>
+            高卒以上／18歳〜35歳以下の方<br>
+            <small>※普通免許所持者優遇（AT限定可）</small>
+          </td></tr>
+          <tr><th>給与</th><td><strong>正社員：年収250万円〜</strong><!-- ★ --></td></tr>
+          <tr><th>勤務時間</th><td>
+            平日　8:33〜17:30（実働8時間／残業あり）<br>
+            日祝　8:33〜16:40（実働7時間10分）
+          </td></tr>
+          <tr><th>休日</th><td>ローテーションカレンダーによる（4勤1休、隔週月曜休校日）／年末年始／夏季3日／<strong>年間105日</strong></td></tr>
+          <tr><th>待遇</th><td>賞与年2回（7月・12月）／昇給年1回（4月）／健康保険／厚生年金／雇用保険／残業手当／交通費支給（月30,000円まで）</td></tr>
+          <tr><th>勤務地</th><td>
+            横浜市青葉区藤が丘1-23-14<br>
+            田園都市線「藤が丘駅」より徒歩約7分<br>
+            <small>車通勤可（研修中は不可）</small>
+          </td></tr>
+        </table>
+
+        <div class="fit">
+          <div class="ok">
+            <h4>✅ こんな方に向いています</h4>
+            人と話すのが好きな方／向上心のある方／いろいろなことにチャレンジしたい方／忍耐力のある方／体力のある方
+          </div>
+          <div class="ng">
+            <h4>⚠️ 向いていない方</h4>
+            人と話すのが苦手な方／短気な方
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- === 応募方法（CTA） === -->
+  <section class="apply" id="apply">
+    <h2>ご応募・お問い合わせ</h2>
+    <p>まずはお電話またはメールでご連絡のうえ、履歴書をご郵送ください。<br>担当：成沢・塚越</p>
+    <div class="cta">
+      <a class="tel" href="tel:0459733113">
+        📞 045-973-3113
+      </a>
+      <a class="mail" href="mailto:narisawa@aoba-ds.jp?subject=%E6%8E%A1%E7%94%A8%E3%81%AE%E3%81%8A%E5%95%8F%E3%81%84%E5%90%88%E3%82%8F%E3%81%9B&body=%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0A%E3%81%94%E5%B8%8C%E6%9C%9B%E8%81%B7%E7%A8%AE%EF%BC%9A%20%E6%95%99%E7%BF%92%E6%8C%87%E5%B0%8E%E5%93%A1%20%2F%20%E5%8F%97%E4%BB%98%E3%83%BB%E4%BA%8B%E5%8B%99%0A%E3%81%94%E9%80%A3%E7%B5%A1%E5%85%88%EF%BC%9A%0A%0A%E3%81%94%E8%B3%AA%E5%95%8F%E7%AD%89%EF%BC%9A">
+        ✉️ narisawa@aoba-ds.jp
+      </a>
+    </div>
+    <small>ご連絡時間の目安は営業時間内（お電話がつながらない場合はメールをご利用ください）</small>
+  </section>
+
+  <p class="note">
+    📄 募集要項は印刷用PDFもご用意しています。
+    <a href="aoba-saiyo.pdf" target="_blank" rel="noopener">募集要項PDFをダウンロード</a>
+  </p>
+
+</main>
+
+<footer>
+  青葉自動車学校　〒227-0043　神奈川県横浜市青葉区藤が丘1-23-14　TEL 045-973-3113
+</footer>
+
+<!-- Google しごと検索対策（構造化データ） -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"JobPosting",
+  "title":"教習指導員（正社員）",
+  "description":"国家資格「教習指導員資格」の取得支援あり。未経験歓迎。",
+  "hiringOrganization":{
+    "@type":"Organization",
+    "name":"青葉自動車学校",
+    "sameAs":"https://aoba-ds.jp"
+  },
+  "jobLocation":{
+    "@type":"Place",
+    "address":{
+      "@type":"PostalAddress",
+      "streetAddress":"青葉区藤が丘1-23-14",
+      "addressLocality":"横浜市",
+      "addressRegion":"神奈川県",
+      "addressCountry":"JP"
+    }
+  },
+  "employmentType":"FULL_TIME",
+  "baseSalary":{
+    "@type":"MonetaryAmount",
+    "currency":"JPY",
+    "value":{"@type":"QuantitativeValue","value":4000000,"unitText":"YEAR"}
+  },
+  "datePosted":"2026-04-01"
+}
+</script>
+
+</body>
+</html>
